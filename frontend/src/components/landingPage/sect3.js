@@ -12,8 +12,8 @@ function sect3() {
 
       <br />
 
-      <div className=" flex flex-row justify-center items-center gap-5 max-md:flex-col w-screen">
-        <div classnName=" w-[30rem] h-[30rem] flex flex-col justify-center items-center landing-section">
+      <div className=" flex flex-row justify-center items-center gap-5 max-md:flex-col w-screen ">
+      <div className=" w-[30rem] h-[30rem] flex flex-col justify-center items-center landing-section">
           <div className="flex justify-center items-center ">
             <img
               className="h-20 w-20 object-cover rounded-full"

@@ -159,7 +159,7 @@ const Signup = ( {initialAddress }) => {
       {(close) => (
         <form className="signup" onSubmit={handleSubmit(onSubmit)}>
           <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 ">
-            <div className="modal h-[35rem] w-[31.25rem] rounded-2xl bg-white flex flex-col mx-10 overflow-y-auto">
+            <div className="modal h-[35rem] w-[31.25rem] rounded-2xl bg-white flex flex-col mx-10">
               <div className="flex flex-row align-center justify-end p-1">
                 <IoIosCloseCircleOutline
                   className="text-3xl cursor-pointer"
@@ -174,10 +174,10 @@ const Signup = ( {initialAddress }) => {
                 <p>Register now for a richer, more empowered journey!</p>
               </div>
 
-              <div className="flex flex-col px-5 py-5">
+              <div className="flex flex-col  px-5 py-5">
                 {step === 1 && (
                   <>
-                    <b>Personal Information 1/3</b>
+                    <b className="flex flex-col items-center justify-center text-xl">Personal Information 1/3</b>
                     <label htmlFor="firstname">First Name</label>
                     <input
                       type="text"
@@ -190,10 +190,10 @@ const Signup = ( {initialAddress }) => {
                       className="w-[full] border-2 border-black rounded-xl p-2"
                     />
                     {errors.firstname && errors.firstname.type === "required" && (
-                      <span className="error">First Name is required</span>
+                      <span className="text-red-500 error">First Name is required</span>
                     )}
                     {errors.firstname && errors.firstname.type === "pattern" && (
-                      <span className="error">First Name must contain only letters</span>
+                      <span className="text-red-500 error">First Name must contain only letters</span>
                     )}
 
                     {/* Lastname*/}
@@ -209,10 +209,10 @@ const Signup = ( {initialAddress }) => {
                       className="w-[full] border-2 border-black rounded-xl p-2"
                     />
                     {errors.lastname && errors.lastname.type === "required" && (
-                      <span className="error">Last Name is required</span>
+                      <span className="text-red-500 error">Last Name is required</span>
                     )}
                     {errors.lastname && errors.lastname.type === "pattern" && (
-                      <span className="error">Last Name must contain only letters</span>
+                      <span className="text-red-500 error">Last Name must contain only letters</span>
                     )}
 
                     {/* Gender */}
@@ -230,7 +230,7 @@ const Signup = ( {initialAddress }) => {
                         <option value="LGBTQ">LGBTQ</option>
                         <option value="Prefer not to say">Prefer not to say</option>
                       </select>
-                      {errors.gender && <span className="error">Gender is required</span>}
+                      {errors.gender && <span className="text-red-500 error">Gender is required</span>}
                     </div>
 
                     {/* Birthdate*/}
@@ -258,22 +258,24 @@ const Signup = ( {initialAddress }) => {
                       className="w-[full] border-2 border-black rounded-xl p-2"
                     />
                     {errors.birthdate && errors.birthdate.type === "required" && (
-                      <span className="error">Birthdate is required</span>
+                      <span className="text-red-500 error">Birthdate is required</span>
                     )}
                     {errors.birthdate && errors.birthdate.type === "validAge" && (
-                      <span className="error">You must be 18 years old or above</span>
+                      <span className="text-red-500 error">You must be 18 years old or above</span>
                     )}
-
+                    <br/>
                     {/* Next button */}
-                    <button type="button" onClick={nextStep}>Next</button>
+                    
+                    <button type="button" className="w-full bg-azure-500 text-white font-bold rounded-xl p-2 "onClick={nextStep}>Next</button>
                   </>
                 )}
 
                 {step === 2 && (
                   <>
                     {/* Your fields for Address here */}
+                    
                     <div className="flex flex-col">
-                      <b>Address Information 2/3</b>
+                      <b className="flex flex-col items-center justify-center text-xl">Address Information 2/3</b>
                       {/* Region */}
                       <label htmlFor="region">Region</label>
                       <select name="region"
@@ -286,7 +288,7 @@ const Signup = ( {initialAddress }) => {
                               <option key={region.region_code} value={region.region_code}>{region.region_name}</option>
                           ))}
                       </select>
-                      {errors.region && <span className="error">Region is required</span>}
+                      {errors.region && <span className="text-red-500 error">Region is required</span>}
                     </div>
 
                       {/* Province */}
@@ -302,7 +304,7 @@ const Signup = ( {initialAddress }) => {
                               <option key={province.province_code} value={province.province_code}>{province.province_name}</option>
                           ))}
                       </select>
-                      {errors.province && <span className="error">Province is required</span>}
+                      {errors.province && <span className="text-red-500 error">Province is required</span>}
                     </div>
 
                     {/* City */}
@@ -320,7 +322,7 @@ const Signup = ( {initialAddress }) => {
                         ))}
 
                       </select>
-                      {errors.city && <span className="error">City is required</span>}
+                      {errors.city && <span className="text-red-500 error">City is required</span>}
                     </div>
 
                       {/* Barangay */}
@@ -338,12 +340,14 @@ const Signup = ( {initialAddress }) => {
                             ))}
 
                         </select>
-                        {errors.barangay && <span className="error">Barangay is required</span>}
+                        {errors.barangay && <span className="text-red-500 error">Barangay is required</span>}
                       </div>
+                      <div className="" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                       <a href="#" className="bg-azure-500 text-white  rounded-xl p-2 " onClick={prevStep} style={{ alignSelf: 'flex-end' }}>Previous</a>
+                        <button type="button" className="bg-azure-500 text-white rounded-xl p-2 " onClick={nextStep}>Next</button>
+                          </div>
 
 
-                    <a href="#" onClick={prevStep}>Previous</a>
-                    <button type="button" onClick={nextStep}>Next</button>
 
                   </>
                 )}
@@ -351,7 +355,7 @@ const Signup = ( {initialAddress }) => {
                 {step === 3 && (
                   <>
                     <div className="flex flex-col px-5 py-5">
-                      <b>Account Information 3/3</b>
+                      <b className="flex flex-col items-center justify-center text-xl">Account Information 3/3</b>
                       <label htmlFor="username">Username</label>
                       <input
                         type="text"
@@ -366,16 +370,16 @@ const Signup = ( {initialAddress }) => {
                         className="w-[full] border-2 border-black rounded-xl p-2"
                       />
                       {errors.username && errors.username.type === "required" && (
-                        <span className="error">Username is required</span>
+                        <span className="text-red-500 error">Username is required</span>
                       )}
                       {errors.username && errors.username.type === "minLength" && (
-                        <span className="error">Username must be at least 6 characters</span>
+                        <span className="text-red-500 error">Username must be at least 6 characters</span>
                       )}
                       {errors.username && errors.username.type === "maxLength" && (
-                        <span className="error">Username cannot exceed 12 characters</span>
+                        <span className="text-red-500 error">Username cannot exceed 12 characters</span>
                       )}
                       {errors.username && errors.username.type === "pattern" && (
-                        <span className="error">Username must contain only lowercase letters and at least one number</span>
+                        <span className="text-red-500 error">Username must contain only lowercase letters and at least one number</span>
                       )}
 
                       {/* Email */}
@@ -391,10 +395,10 @@ const Signup = ( {initialAddress }) => {
                         className="w-[full] border-2 border-black rounded-xl p-2"
                       />
                       {errors.email && errors.email.type === "required" && (
-                        <span className="error">Email is required</span>
+                        <span className="text-red-500 error">Email is required</span>
                       )}
                       {errors.email && errors.email.type === "pattern" && (
-                        <span className="error">Invalid email address</span>
+                        <span className="text-red-500 error">Invalid email address</span>
                       )}
 
                       {/* Password */}
@@ -413,16 +417,16 @@ const Signup = ( {initialAddress }) => {
                         className="w-[full] border-2 border-black rounded-xl p-2"
                       />
                       {errors.password && errors.password.type === "required" && (
-                        <span className="error">Password is required</span>
+                        <span className="text-red-500 error">Password is required</span>
                       )}
                       {errors.password && errors.password.type === "minLength" && (
-                        <span className="error">Password must be at least 8 characters</span>
+                        <span className="text-red-500 error">Password must be at least 8 characters</span>
                       )}
                       {errors.password && errors.password.type === "maxLength" && (
-                        <span className="error">Password cannot exceed 24 characters</span>
+                        <span className="text-red-500 error">Password cannot exceed 24 characters</span>
                       )}
                       {errors.password && errors.password.type === "pattern" && (
-                        <span className="error">Password must contain at least one number, one capital letter, one small letter, and one special character</span>
+                        <span className="text-red-500 error">Password must contain at least one number, one capital letter, one small letter, and one special character</span>
                       )}
 
                       {/* Confirm Password */}
@@ -441,10 +445,10 @@ const Signup = ( {initialAddress }) => {
                         className="w-[full] border-2 border-black rounded-xl p-2"
                       />
                       {errors.confirmPassword && errors.confirmPassword.type === "required" && (
-                        <span className="error">Confirm Password is required</span>
+                        <span className="text-red-500 error">Confirm Password is required</span>
                       )}
                       {errors.confirmPassword && errors.confirmPassword.type === "passwordMatch" && (
-                        <span className="error">Passwords do not match</span>
+                        <span className="text-red-500 error">Passwords do not match</span>
                       )}
 
                       <a href="#" onClick={prevStep}>Previous</a>
@@ -457,10 +461,10 @@ const Signup = ( {initialAddress }) => {
                 )}
 
                 {passwordMatchError && (
-                  <span className="error">Passwords do not match</span>
+                  <span className="text-red-500 error">Passwords do not match</span>
                 )}
 
-                {error && <div className="error">{error}</div>}
+                {error && <div className="text-red-500 error">{error}</div>}
               </div>
             </div>
           </div>

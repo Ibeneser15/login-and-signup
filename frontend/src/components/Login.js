@@ -15,20 +15,24 @@ const Login = () => {
   };
 
   return (
-    <Popup trigger={<button className="border-2 rounded-xl p-4 py-1.5 border-azure">Log in</button>} modal nested>
+    <Popup trigger={<button className="border-2 rounded-xl p-4 py-1.5 border-azure-500 text-azure-500">Log in</button>
+  }
+  modal
+  nested
+>
       {(close) => (
-        <div className="flex items-center justify-center">
-          <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center z-50 backdrop-filter backdrop-blur-lg bg-opacity-25 bg-black">
-            <form className="modal h-[28rem] w-[31.25rem] rounded-2xl bg-white flex flex-col mx-10" onSubmit={handleSubmit}>
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 backdrop-filter backdrop-blur-lg bg-opacity-25 bg-black ">
+          <div className="modal h-[23rem] w-[31.00rem] rounded-2xl bg-white flex flex-col mx-10 ">
               <div className="flex flex-row align-center justify-end p-1">
                 <IoIosCloseCircleOutline className="text-3xl cursor-pointer" onClick={() => close()} />
               </div>
-
               <div className="flex flex-col items-center justify-center">
                 <h1 className="font-bold text-4xl">
                   Sign In to <span className="text-azure">GabAi</span>
                 </h1>
+                
                 <p>Empower your workplace today!</p>
+                <br/>
               </div>
 
               <div className="flex flex-col items-center justify-center">
@@ -54,6 +58,7 @@ const Login = () => {
               </div>
 
               <div className="mx-12">
+                <br/>
                 <button
                   disabled={isLoading}
                   type="submit"
@@ -64,12 +69,12 @@ const Login = () => {
                 {error && <div className="error">{error}</div>}
               </div>
 
+              <br/>
               <div className="flex flex-row items-center justify-center">
                 <p>
                   Don't have an account? <Signup />
                 </p>
               </div>
-            </form>
           </div>
         </div>
       )}
